@@ -4,6 +4,7 @@ l2 = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S
 l3 = ['1','2','3','4','5','6','7','8','9','0'] # Numbers
 l4 = ['&','$','@'] # special Characters
 l5 = [] # password
+passwordlist =[]
 
 def main():
     # print(len(l1))
@@ -21,12 +22,21 @@ def main():
         randnum4 = random.randint(0,len(l4)-1)
         l5.append(l4[randnum4])
         i+=1
-    # print(l5)
-    password = ''.join(l5)
+
+    # randomizing placing of characters
+    listindex=0
+    while(listindex<8):
+        indexnum = random.randint(0,len(l5)-1)
+        passwordlist.insert(listindex,l5[indexnum])
+        listindex +=1
+        l5.pop(indexnum)
+    # print(passwordlist)
+
+    password = ''.join(passwordlist)
     print(f'Your password is : {password}')
     # Clearing the list
-    for i in range(0,len(l5)):    
-        l5.pop(0)
+    for i in range(0,len(passwordlist)):    
+        passwordlist.pop(0)
         # print(l5)
 
 # Save generated password
